@@ -1,6 +1,9 @@
 <div class="container">
   <div class>
     <%= @instrument.name %>
+
+    <%= cl_image_tag @instrument.photo.key, width: 400, height: 300, crop: :fill %>
+
     <%= link_to "Add a booking", new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
     <% @instrument.bookings.each do |b| %>
     <p>Booked by: <%= b.user.email %> </p>
