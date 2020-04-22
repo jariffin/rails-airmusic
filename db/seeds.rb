@@ -16,14 +16,14 @@ puts "Creating instruments..."
 
 maria = User.create(email:"weber-maria@outlook.com", password:"123456")
 
-guitar = Instrument.create(user_id: 1, name: 'Guitar', description: 'Great acoustic guitar', price_per_day: 10.90)
+guitar = Instrument.create(user_id: maria.id, name: 'Guitar', description: 'Great acoustic guitar', price_per_day: 10)
 
-piano = Instrument.create(user_id: 1, name: 'Piano', description: 'Yamaha brand', price_per_day: 30)
+piano = Instrument.create(user_id: maria.id, name: 'Piano', description: 'Yamaha brand', price_per_day: 30)
 
-violin = Instrument.create(user_id: 1, name: 'Violin', description: 'Unique old style instrument', price_per_day: 25)
+violin = Instrument.create(user_id: maria.id, name: 'Violin', description: 'Unique old style instrument', price_per_day: 25)
 
-harp = Instrument.create(user_id: 1, name: 'Harp', description: 'Sounds like an angel', price_per_day: 20.50)
+harp = Instrument.create(user_id: maria.id, name: 'Harp', description: 'Sounds like an angel', price_per_day: 20)
 
-bagpipes = Instrument.create(user_id: 1, name: 'Bagpipes', description: 'Kilt is not included', price_per_day: 15)
+bagpipes = Instrument.create(user_id: maria.id, name: 'Bagpipes', description: 'Kilt is not included', price_per_day: 15)
 
 puts "Successfully created"
