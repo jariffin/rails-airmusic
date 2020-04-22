@@ -8,9 +8,9 @@
 puts "Cleaning database..."
 
 Instrument.destroy_all
-Booking.destroy_all
-User.destroy_all
-Review.destroy_all
+# Booking.destroy_all
+# User.destroy_all
+# Review.destroy_all
 
 puts "Creating instruments..."
 
