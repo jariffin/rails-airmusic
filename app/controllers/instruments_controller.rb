@@ -26,7 +26,7 @@ class InstrumentsController < ApplicationController
 
   def destroy
     @instrument = Instrument.find(params[:id])
-    @instrument.delete
+    @instrument.destroy
     redirect_to instruments_path
   end
 
