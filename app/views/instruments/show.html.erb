@@ -18,7 +18,10 @@
     <% @instrument.reviews.each do |r| %>
     <p>Reviews: <%= r.content %></p>
     <p>By User: <%= r.user.email%></p>
-    <% end %>
+    <%= link_to "Delete review", review_path(r),
+      method: :delete,
+      data: { confirm: "Are you sure?" } %>
+   <% end %>
   </div>
   <hr>
 
