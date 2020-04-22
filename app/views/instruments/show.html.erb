@@ -1,0 +1,10 @@
+<div class="container">
+  <%= @instrument.name %>
+  <%= link_to "Add a booking", new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
+  <% @instrument.bookings.each do |b| %>
+  <%= b.user.email %>
+  <%= b.start_date %>
+  <%= b.end_date %>
+  <% end %>
+  <%= link_to "Home", root_path %>
+</div>
