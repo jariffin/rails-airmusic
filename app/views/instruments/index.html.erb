@@ -3,7 +3,6 @@ Hello!
 <div class="container">
   <% @instruments.each do |i| %>
   <%= i.name %>
+  <%= link_to "Delete", instrument_path(i), method: :delete, data: {confirm: "Are you sure?"} %>
   <% end %>
-
-
 </div>
