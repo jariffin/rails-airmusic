@@ -6,5 +6,16 @@
   <%= b.start_date %>
   <%= b.end_date %>
   <% end %>
+
+  <hr>
+
+  <%= link_to "Add a review", new_instrument_review_path(@instrument), class: "btn btn-primary" %>
+  <% @instrument.reviews.each do |r| %>
+  <%= r.content %>
+  <%= r.user.email%>
+  <% end %>
+
+  <hr>
+
   <%= link_to "Home", root_path %>
 </div>
