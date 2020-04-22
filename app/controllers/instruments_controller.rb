@@ -7,6 +7,7 @@ class InstrumentsController < ApplicationController
   def show
     @instrument = Instrument.find(params[:id])
     @bookings = @instrument.bookings
+    @reviews = @instrument.reviews
   end
 
   def new

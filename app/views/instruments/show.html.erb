@@ -1,10 +1,26 @@
 <div class="container">
-  <%= @instrument.name %>
-  <%= link_to "Add a booking", new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
-  <% @instrument.bookings.each do |b| %>
-  <%= b.user.email %>
-  <%= b.start_date %>
-  <%= b.end_date %>
-  <% end %>
+  <div class>
+    <%= @instrument.name %>
+    <%= link_to "Add a booking", new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
+    <% @instrument.bookings.each do |b| %>
+    <p>Booked by: <%= b.user.email %> </p>
+    <p>Starts: <%= b.start_date %></p>
+    <p>Ends: <%= b.end_date %></p>
+    <%= link_to "Delete", booking_path(b),
+        method: :delete,
+        data: { confirm: "Are you sure?" } %>
+    <% end %>
+  </div>
+  <hr>
+
+  <div class>
+    <%= link_to "Add a review", new_instrument_review_path(@instrument), class: "btn btn-primary" %>
+    <% @instrument.reviews.each do |r| %>
+    <p>Reviews: <%= r.content %></p>
+    <p>By User: <%= r.user.email%></p>
+    <% end %>
+  </div>
+  <hr>
+
   <%= link_to "Home", root_path %>
 </div>
