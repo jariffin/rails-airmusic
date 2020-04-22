@@ -2,6 +2,7 @@ class ReviewsController < ApplicationController
 
   def new
     @review = Review.new
+    @instrument = Instrument.find(params[:instrument_id])
   end
 
   def create
