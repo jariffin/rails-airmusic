@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     @review = Review.find(params[:id])
-    @review.delete
+    @review.destroy
     redirect_to instrument_path(@review.instrument)
   end
 
