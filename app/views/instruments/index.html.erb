@@ -1,19 +1,20 @@
-Hello!
+
 
 <div class="container">
-  <% @instruments.each do |i| %>
-  <%= cl_image_tag(i.photo.key, width: 150, height: 150, crop: :fill) if i.photo.attached? %>
-  <%= link_to i.name, instrument_path(i) %>
-  <%= link_to "Delete", instrument_path(i), method: :delete, data: {confirm: "Are you sure?"} %>
-  <% end %>
-
-
-  <div class="photo">
-
-  <%= cl_image_tag("hgxb7e5zfhnjk4bp0ul6",
-      width: 400, height: 300, crop: :fill) %>
+  <div class="content">
+    <div class="cards">
+      <% @instruments.each do |i| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path(i.photo.key, width: 300, height: 400, crop: :fill) if i.photo.attached? %>')">
+          <%= link_to i.name, instrument_path(i) %>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <hr>
   <%= link_to "Add an Instrument", new_instrument_path, class: "btn btn-primary" %>
+  </div>
 </div>
+
+
+
