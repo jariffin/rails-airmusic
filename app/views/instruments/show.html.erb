@@ -1,32 +1,78 @@
-<div class="container">
-  <div class>
-    <%= @instrument.name %>
 
-    <%= cl_image_tag @instrument.photo.key, width: 400, height: 300, crop: :fill %>
+<div class="bg-dark">
+  <div class="bg-dark mx-5">
+    <div class="col-12 bg-dark py-2">
 
-    <%= link_to "Add a booking", new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
-    <% @instrument.bookings.each do |b| %>
-    <p>Booked by: <%= b.user.email %> </p>
-    <p>Starts: <%= b.start_date %></p>
-    <p>Ends: <%= b.end_date %></p>
-    <%= link_to "Delete", booking_path(b),
-        method: :delete,
-        data: { confirm: "Are you sure?" } %>
-    <% end %>
+      <div class="bg-light py-4 m-4">
+        <div class="text-center p-4">
+          <h1><%= @instrument.name %></h1>
+        </div>
+        <div class="text-center">
+          <%= cl_image_tag @instrument.photo.key, width: 400, height: 300, crop: :fill %>
+        </div>
+        <div class="text-center p-4 px-4">
+          <p><strong>Price per day: </strong><%= @instrument.price_per_day %> CHK |
+            <strong>Owned by: </strong><%= @instrument.user.email %></p>
+        </div>
+        <div class="px-4 mx-4">
+          <%= @instrument.description %>
+        </div>
+
+        <div class="text-center py-4">
+          <div class="">
+     <!--        <div class=""> -->
+              <%= link_to "Add a booking", new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
+    <!--         </div>
+            <div class=""> -->
+              <%= link_to "Add a review", new_instrument_review_path(@instrument), class: "btn btn-primary" %>
+       <!--      </div> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class=""> -->
+      <div class="bg-light m-4 py-4">
+        <div class="text-center py-4">
+          <h3>Bookings</h3>
+        </div>
+        <div class="d-flex row py-4 mx-1">
+          <% @instrument.bookings.each do |b| %>
+          <div class="col-md-3 mx-4 px-4">
+            <p><strong>Booked by:</strong> <%= b.user.email %>,</p>
+            <p><strong>From: </strong><%= b.start_date %> to <%= b.end_date %></p>
+            <%= link_to "Delete", booking_path(b),
+                method: :delete,
+                data: { confirm: "Are you sure?" } %>
+          </div>
+          <% end %>
+        </div>
+      </div>
+<!--       </div> -->
+
+      <div class="m-4 bg-light py-4">
+        <div class="text-center py-4">
+          <h3>Reviews</h3>
+        </div>
+        <% @instrument.reviews.each do |r| %>
+        <div class="p-4 mx-4">
+          <p><em><%= r.content %></em></p>
+          <div class="d-flex justify-content-between">
+            <div class="">
+              <%= link_to "Delete review", review_path(r),
+              method: :delete,
+              data: { confirm: "Are you sure?" } %>
+            </div>
+            <div class="">
+              <p><em><strong>Posted by:</strong> <%= r.user.email%></em></p>
+            </div>
+          </div>
+        </div>
+       <% end %>
+      </div>
+
+      <div class="text-center p-4">
+        <%= link_to "Home", root_path, class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
-  <hr>
-
-  <div class>
-    <%= link_to "Add a review", new_instrument_review_path(@instrument), class: "btn btn-primary" %>
-    <% @instrument.reviews.each do |r| %>
-    <p>Reviews: <%= r.content %></p>
-    <p>By User: <%= r.user.email%></p>
-    <%= link_to "Delete review", review_path(r),
-      method: :delete,
-      data: { confirm: "Are you sure?" } %>
-   <% end %>
-  </div>
-  <hr>
-
-  <%= link_to "Home", root_path %>
 </div>
