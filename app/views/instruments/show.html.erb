@@ -1,9 +1,8 @@
-
-<div class="bg-dark">
+<div class="bg-dark ">
   <div class="bg-dark mx-5">
-    <div class="col-12 bg-dark py-2">
+    <div class=" col-md-12 bg-dark py-2">
 
-      <div class="bg-light py-4 m-4">
+      <div class="bg-light m-4 py-4">
         <div class="text-center p-4">
           <h1><%= @instrument.name %></h1>
         </div>
@@ -20,17 +19,17 @@
 
         <div class="text-center py-4">
           <div class="">
-     <!--        <div class=""> -->
               <%= link_to "Add a booking", new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
-    <!--         </div>
-            <div class=""> -->
               <%= link_to "Add a review", new_instrument_review_path(@instrument), class: "btn btn-primary" %>
-       <!--      </div> -->
+              <%= link_to "Update instrument", edit_instrument_path(@instrument), class: "btn btn-primary" %>
+              <%= link_to "Delete instrument", instrument_path(@instrument), class: "btn btn-primary",
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } %>
           </div>
         </div>
       </div>
 
-      <!-- <div class=""> -->
+
       <div class="bg-light m-4 py-4">
         <div class="text-center py-4">
           <h3>Bookings</h3>
@@ -42,14 +41,15 @@
             <p><strong>From: </strong><%= b.start_date %> to <%= b.end_date %></p>
             <%= link_to "Delete", booking_path(b),
                 method: :delete,
-                data: { confirm: "Are you sure?" } %>
+                data: { confirm: "Are you sure?" } %> |
+            <%= link_to "Edit", edit_instrument_booking_path(b) %>
           </div>
           <% end %>
         </div>
       </div>
-<!--       </div> -->
 
-      <div class="m-4 bg-light py-4">
+
+      <div class="bg-light m-4 py-4">
         <div class="text-center py-4">
           <h3>Reviews</h3>
         </div>
@@ -68,11 +68,13 @@
           </div>
         </div>
        <% end %>
+
+        <div class="text-center p-4">
+          <%= link_to "Home", root_path, class: "btn btn-primary" %>
+        </div>
       </div>
 
-      <div class="text-center p-4">
-        <%= link_to "Home", root_path, class: "btn btn-primary" %>
-      </div>
+
     </div>
   </div>
 </div>
