@@ -11,7 +11,11 @@ class InstrumentsController < ApplicationController
   end
 
   def new
-    @instrument = Instrument.new
+    if current_user.nil?
+      redirect_to new_user_session_path
+    else
+      @instrument = Instrument.new
+    end
   end
 
   def create
