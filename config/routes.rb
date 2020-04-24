@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'instruments#index'
 
-  resources :instruments, only: [:index, :show, :new, :create, :destroy] do
-    resources :bookings, only: [:new, :create]
-    resources :reviews, only: [:new, :create]
+  resources :instruments, only: [:index, :new, :show, :create, :edit, :update, :destroy] do
+    resources :bookings, only: [:new, :create, :edit, :update]
+    resources :reviews, only: [:new, :create, :edit, :update]
   end
   resources :bookings, only: [:destroy]
   resources :reviews, only: [:destroy]

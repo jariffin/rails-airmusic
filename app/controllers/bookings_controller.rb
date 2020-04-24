@@ -20,6 +20,20 @@ class BookingsController < ApplicationController
     end
   end
 
+  def edit
+    @booking = Booking.find(params[:id])
+  end
+
+  def update
+    @booking = Booking.find(params[:id])
+    @booking.instrument.user_id = current_user.id
+      if @booking.update(bookings_params)
+        redirect_to instrument_path(@instrument)
+      else
+        render :edit
+      end
+  end
+
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy

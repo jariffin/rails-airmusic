@@ -1,0 +1,17 @@
+
+<div class="container center-align">
+  <div class="">
+    <div class="text-center">
+      <h1>Please enter the instrument details:</h1>
+    </div>
+      <div class="">
+        <%= simple_form_for @instrument do |f| %>
+          <%= f.input :name  %>
+          <%= f.input :description, as: :text  %>
+          <%= f.input :price_per_day, as: :integer %>
+          <%= f.input :photo, as: :file %>
+          <%= f.button :submit, class: "btn btn-primary" %>
+        <% end %>
+      </div>
+  </div>
+</div>
