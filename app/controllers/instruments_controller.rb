@@ -5,7 +5,14 @@ class InstrumentsController < ApplicationController
     if params[:query].present?
       @instruments =  Instrument.global_search(params[:query])
     else
-      @instruments = Instrument.all
+      # @instruments = Instrument.all
+      @instruments = Instrument.geocoded # returns flats with coordinates
+      @markers = @instruments.map do |flat|
+        {
+          lat: flat.latitude,
+          lng: flat.longitude
+        }
+      end
     end
   end
 
@@ -54,7 +61,7 @@ class InstrumentsController < ApplicationController
   private
 
   def instruments_params
-    params.require(:instrument).permit(:name, :description, :photo, :location, :user_id, :price_per_day)
+    params.require(:instrument).permit(:name, :description, :address, :photo, :location, :user_id, :price_per_day)
   end
 
   def set_instrument
