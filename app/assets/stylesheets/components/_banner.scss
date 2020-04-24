@@ -3,9 +3,11 @@
   background-image: url("https://images.unsplash.com/photo-1507838153414-b4b713384a76");
   text-align: center;
   padding: 150px 0px;
+  max-height: 450px;
   background-size: cover;
   opacity: 0.7;
   margin: 0;
+
 
   h1 {
     margin-top: 0;
@@ -18,5 +20,6 @@
     font-size: 20px;
     text-shadow: 1px 1px #D3D3D3;
     letter-spacing: 0.182em;
+    margin-bottom: 130px;
   }
 }
