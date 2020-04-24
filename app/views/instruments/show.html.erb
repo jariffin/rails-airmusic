@@ -1,36 +1,43 @@
-
-<div class="bg-dark">
+<div class="bg-dark ">
   <div class="bg-dark mx-5">
-    <div class="col-12 bg-dark py-2">
+    <div class=" col-md-12 bg-dark py-2">
 
-      <div class="bg-light py-4 m-4">
-        <div class="text-center p-4">
+      <div class="bg-light m-4 py-4">
+        <div class="text-center py-4">
           <h1><%= @instrument.name %></h1>
         </div>
-        <div class="text-center">
+        <div class="text-center py-4">
           <%= cl_image_tag @instrument.photo.key, width: 400, height: 300, crop: :fill %>
         </div>
-        <div class="text-center p-4 px-4">
-          <p><strong>Price per day: </strong><%= @instrument.price_per_day %> CHK |
+        <div class="text-center px-4">
+          <p><strong>Price per day: </strong><%= @instrument.price_per_day %> CHF |
             <strong>Owned by: </strong><%= @instrument.user.email %></p>
         </div>
-        <div class="px-4 mx-4">
+          <div class="text-center">
+                <%= link_to edit_instrument_path(@instrument) do %>
+                  <i class="fas fa-pen"></i>
+                <% end %>
+                <%= link_to instrument_path(@instrument),
+                  method: :delete,
+                  data: { confirm: "Are you sure?" } do %>
+                    <i class="fas fa-trash" class="btn btn-flat"></i>
+                  <% end %>
+            </div>
+        <div class="p-4 mx-4">
           <%= @instrument.description %>
         </div>
 
         <div class="text-center py-4">
           <div class="">
-     <!--        <div class=""> -->
+            <div class>
               <%= link_to "Add a booking", new_instrument_booking_path(@instrument), class: "btn btn-primary" %>
-    <!--         </div>
-            <div class=""> -->
               <%= link_to "Add a review", new_instrument_review_path(@instrument), class: "btn btn-primary" %>
-       <!--      </div> -->
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- <div class=""> -->
+
       <div class="bg-light m-4 py-4">
         <div class="text-center py-4">
           <h3>Bookings</h3>
@@ -43,13 +50,14 @@
             <%= link_to "Delete", booking_path(b),
                 method: :delete,
                 data: { confirm: "Are you sure?" } %>
+
           </div>
           <% end %>
         </div>
       </div>
-<!--       </div> -->
 
-      <div class="m-4 bg-light py-4">
+
+      <div class="bg-light m-4 py-4">
         <div class="text-center py-4">
           <h3>Reviews</h3>
         </div>
@@ -68,11 +76,13 @@
           </div>
         </div>
        <% end %>
+
+        <div class="text-center p-4">
+          <%= link_to "Home", root_path, class: "btn btn-primary" %>
+        </div>
       </div>
 
-      <div class="text-center p-4">
-        <%= link_to "Home", root_path, class: "btn btn-primary" %>
-      </div>
+
     </div>
   </div>
 </div>

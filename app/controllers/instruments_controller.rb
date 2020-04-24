@@ -1,11 +1,11 @@
 class InstrumentsController < ApplicationController
+  before_action :set_instrument, only: [:show, :edit, :update, :destroy]
 
   def index
     @instruments = Instrument.all
   end
 
   def show
-    @instrument = Instrument.find(params[:id])
     @bookings = @instrument.bookings
     @reviews = @instrument.reviews
   end
@@ -28,8 +28,21 @@ class InstrumentsController < ApplicationController
     end
   end
 
+  def edit;end
+
+  def update
+    if current_user.nil?
+      redirect_to new_user_session_path
+    else @instrument.user_id = current_user.id
+      if @instrument.update(instruments_params)
+        redirect_to instrument_path(@instrument)
+      else
+        render :edit
+      end
+    end
+  end
+
   def destroy
-    @instrument = Instrument.find(params[:id])
     @instrument.destroy
     redirect_to instruments_path
   end
@@ -38,6 +51,10 @@ class InstrumentsController < ApplicationController
 
   def instruments_params
     params.require(:instrument).permit(:name, :description, :photo, :location, :user_id, :price_per_day)
+  end
+
+  def set_instrument
+    @instrument = Instrument.find(params[:id])
   end
 
 end
