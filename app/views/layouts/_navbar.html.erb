@@ -1,14 +1,16 @@
 <nav class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container d-flex align-items-center justify-content-between">
   <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag("/assets/air_logo.png", :height=>70) %>
+    <%= image_tag("/assets/6.png", :height=>70) %>
   <% end %>
   <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+     <ul class="navbar-nav mr-auto">
+        <%= link_to "Share your instrument", new_instrument_path, class: "nav-link" %>
     <div style="padding-left: 12px;">
   <% if user_signed_in? %>
-      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-outline-secondary btn-sm") %>
+      <%= link_to('Logout', destroy_user_session_path, method: :delete, class: "btn btn-primary btn-sm") %>
   <% else %>
-      <%= link_to('Login', new_user_session_path, class: "btn btn-outline-secondary btn-sm") %>
-      <%= link_to('Sign up', new_user_registration_path, class: "btn btn-outline-secondary btn-sm") %>
+      <%= link_to('Login', new_user_session_path, class: "btn btn-primary btn-sm") %>
+      <%= link_to('Sign up', new_user_registration_path, class: "btn btn-primary btn-sm") %>
   <% end %>
 </nav>
