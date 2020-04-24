@@ -5,8 +5,8 @@ class Instrument < ApplicationRecord
   has_one_attached :photo
 
 
-  # with s, that means Instrument has_many reviews
-
+  # reviews with 's', because Instrument has_many reviews
+  # otherwise without, if Reviews has many instruments.
   include PgSearch::Model
   pg_search_scope :global_search,
     against: [ :name, :description ],
@@ -17,10 +17,5 @@ class Instrument < ApplicationRecord
       tsearch: { prefix: true }
     }
 
-  # include PgSearch::Model
-  # pg_search_scope :search_by_name_and_description,
-  #   against: [ :name, :description ],
-  #   using: {
-  #     tsearch: { prefix: true } # <-- now `superman batm` will return something!
-  #   }
+
 end
