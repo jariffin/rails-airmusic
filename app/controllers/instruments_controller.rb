@@ -31,11 +31,14 @@ class InstrumentsController < ApplicationController
   def edit;end
 
   def update
-    @instrument.user_id = current_user.id
-    if @instrument.update(instruments_params)
-      redirect_to instrument_path(@instrument)
-    else
-      render :edit
+    if current_user.nil?
+      redirect_to new_user_session_path
+    else @instrument.user_id = current_user.id
+      if @instrument.update(instruments_params)
+        redirect_to instrument_path(@instrument)
+      else
+        render :edit
+      end
     end
   end
 
