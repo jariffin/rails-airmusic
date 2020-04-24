@@ -12,6 +12,7 @@
         <div class="text-center px-4">
           <p><strong>Price per day: </strong><%= @instrument.price_per_day %> CHF |
             <strong>Owned by: </strong><%= @instrument.user.email %></p>
+            <p><strong>Address: </strong><%= @instrument.address %></p>
         </div>
           <div class="text-center">
                 <%= link_to edit_instrument_path(@instrument) do %>
